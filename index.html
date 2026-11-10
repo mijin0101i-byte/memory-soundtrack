@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>記憶のサウンドトラック</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --cream: #f3eee5;
+  --ink: #302921;
+  --brown: #74604d;
+  --line: #cfc3b3;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Noto Serif JP', serif;
+}
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+  color: #fffaf1;
+  position: relative;
+  background:
+    linear-gradient(rgba(30,24,19,.35),rgba(30,24,19,.68)),
+    linear-gradient(135deg,#6d6254,#302820 55%,#171512);
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 15px;
+  border: 1px solid rgba(255,255,255,.35);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 1; }
+.eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: .28em;
+  font-size: 13px;
+}
+.hero h1 {
+  font-size: clamp(30px,6vw,58px);
+  font-weight: 400;
+  letter-spacing: .12em;
+  line-height: 1.8;
+  margin: 35px 0 12px;
+}
+.hero .english {
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: .25em;
+  font-size: 15px;
+}
+.scroll {
+  margin-top: 90px;
+  font-size: 10px;
+  letter-spacing: .2em;
+}
+.scroll span {
+  display: block;
+  font-size: 20px;
+  margin-top: 12px;
+}
+section { padding: 100px 8%; }
+.section-heading { text-align: center; margin-bottom: 55px; }
+.section-heading .en {
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: .25em;
+  color: var(--brown);
+  font-size: 14px;
+}
+.section-heading h2 {
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: .12em;
+  margin: 15px 0;
+}
+.section-heading p {
+  font-size: 12px;
+  color: #82786c;
+  letter-spacing: .08em;
+}
+.memories {
+  max-width: 950px;
+  margin: auto;
+}
+.memory {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 45px;
+  align-items: center;
+  margin: 0 0 100px;
+}
+.memory:nth-child(even) { direction: rtl; }
+.memory:nth-child(even) > * { direction: ltr; }
+.photo {
+  min-height: 340px;
+  background: #d7cabb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border: 9px solid #e8dfd2;
+  outline: 1px solid var(--line);
+}
+.photo::before {
+  content: "YOUR PHOTO";
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: .2em;
+  color: #786b5c;
+  font-size: 13px;
+}
+.photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.memory-number {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--brown);
+  letter-spacing: .2em;
+  font-size: 14px;
+}
+.memory h3 {
+  font-size: 23px;
+  font-weight: 400;
+  line-height: 1.9;
+  margin: 18px 0 25px;
+}
+.memory p {
+  font-size: 13px;
+  line-height: 2.5;
+  color: #62584e;
+}
+details { margin-top: 25px; }
+summary {
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: .12em;
+  border-bottom: 1px solid var(--line);
+  padding: 13px 0;
+  list-style: none;
+}
+summary::after { content: " ＋"; }
+details[open] summary::after { content: " −"; }
+.story { padding-top: 15px; }
+audio { width: 100%; margin-top: 15px; }
+.note {
+  text-align: center;
+  font-size: 11px;
+  color: #82786c;
+  line-height: 2.2;
+  margin-top: 30px;
+}
+footer {
+  background: #302921;
+  color: #e9dfd2;
+  text-align: center;
+  padding: 55px 20px;
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: .2em;
+  font-size: 13px;
+}
+@media(max-width:700px) {
+  section { padding: 75px 7%; }
+  .memory, .memory:nth-child(even) {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    direction: ltr;
+    margin-bottom: 75px;
+  }
+  .photo { min-height: 260px; }
+  .memory h3 { font-size: 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">A COLLECTION OF MY MEMORIES</div>
+    <h1>記憶の<br>サウンドトラック</h1>
+    <div class="english">MEMORY SOUNDTRACK</div>
+    <div class="scroll">SCROLL TO EXPLORE<span>↓</span></div>
+  </div>
+</header>
+
+<section id="memories">
+  <div class="section-heading">
+    <div class="en">CHAPTER 01</div>
+    <h2>MY MEMORIES</h2>
+    <p>THREE MOMENTS, THREE SOUNDTRACKS.</p>
+  </div>
+
+  <div class="memories">
+
+    <article class="memory">
+      <div class="photo">
+        <img src="images/fireworks.jpg" alt="二十歳の夏の花火"
+        onerror="this.style.display='none'">
+      </div>
+      <div>
+        <div class="memory-number">01 / FIREWORKS</div>
+        <h3>二十歳の夏、<br>大好きなみんなとの夏。</h3>
+        <p>吉祥寺のアルバイト先で、みんなと夏の思い出を作ろうと決めた日。</p>
+        <details>
+          <summary>READ MY STORY</summary>
+          <div class="story">
+            <p>お店を閉めたあと、先に集まっていた仲間のもとへ、仕事を終えたメンバーも合流。みんなで井の頭公園まで歩き、花火を楽しんだ。</p>
+            <p>何気ない一日の延長にあった、忘れたくない夏の夜。二十歳の夏、大好きなみんなと過ごした大切な思い出。</p>
+            <p>この日の空気を、生活音とピアノで音楽に残した。</p>
+            <audio controls preload="none" src="audio/fireworks.mp3"></audio>
+          </div>
+        </details>
+      </div>
+    </article>
+
+    <article class="memory">
+      <div class="photo">
+        <img src="images/fukushima.jpg" alt="大好きな福島の景色"
+        onerror="this.style.display='none'">
+      </div>
+      <div>
+        <div class="memory-number">02 / FUKUSHIMA</div>
+        <h3>帰りたくなる、<br>私の福島。</h3>
+        <p>私の大好きな場所、福島。おばあちゃんと過ごす時間が好き。</p>
+        <details>
+          <summary>READ MY STORY</summary>
+          <div class="story">
+            <p>おばあちゃんと家族で車に乗り、福島の景色を眺めながらあちこちを巡る時間が好き。温泉に出かけたとき、近くを流れる川の音を録音した。</p>
+            <p>ゆっくり流れる時間と、どこか懐かしくて温かい景色。いつかまた帰りたくなる、私にとって特別な場所。</p>
+            <audio controls preload="none" src="audio/fukushima.mp3"></audio>
+          </div>
+        </details>
+      </div>
+    </article>
+
+    <article class="memory">
+      <div class="photo">
+        <img src="images/pond.jpg" alt="井の頭公園の池の水面"
+        onerror="this.style.display='none'">
+      </div>
+      <div>
+        <div class="memory-number">03 / THE POND</div>
+        <h3>涙でぼやけた、<br>あの日の水面。</h3>
+        <p>井の頭公園の池を眺めていた、ある日。</p>
+        <details>
+          <summary>READ MY STORY</summary>
+          <div class="story">
+            <p>大切な人との別れを告げられたとき、私は目の前の水面をずっと見つめていた。涙でぼやけた景色は、今でも忘れられない。</p>
+            <p>思い返すと胸がぎゅっとなるけれど、あの日の自分も、今の私につながる大切な記憶。だからこそ、音楽に残しておきたかった。</p>
+            <audio controls preload="none" src="audio/pond.mp3"></audio>
+          </div>
+        </details>
+      </div>
+    </article>
+
+  </div>
+
+  <p class="note">写真を開いて、私の記憶をたどってみてください。</p>
+</section>
+
+<footer>
+  MEMORY SOUNDTRACK<br>
+  <span style="font-size:10px;letter-spacing:.1em;">EVERY MEMORY HAS ITS OWN MUSIC.</span>
+</footer>
+
+</body>
+</html>
