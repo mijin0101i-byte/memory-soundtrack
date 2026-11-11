@@ -774,7 +774,8 @@ footer {
     </div>
 
   </div>
-</section><!-- YOUR MUSIC -->
+</section>
+<!-- YOUR MUSIC -->
 <section class="your-music" id="your-music">
   <div class="your-music-inner">
 
@@ -785,12 +786,10 @@ footer {
     </div>
 
     <div class="your-music-intro">
-      <p class="your-music-lead">
-        あなたの思い出を、音楽に。
-      </p>
+      <p class="your-music-lead">あなたの思い出を、音楽に。</p>
       <p>
         あなたの心に残っている景色は、どんな音がしますか？<br>
-        思い出と生活音、そしてピアノを組み合わせて、<br>
+        思い出と生活音、そしてメロディーを組み合わせて、<br>
         あなただけのサウンドトラックをつくってみましょう。
       </p>
     </div>
@@ -829,43 +828,166 @@ footer {
       <p>その思い出に似合う生活音を選んでください。（複数選択可）</p>
 
       <div class="choice-grid">
-        <label class="choice-card"><input type="checkbox" name="sound" value="rain"><span>雨の音</span></label>
-        <label class="choice-card"><input type="checkbox" name="sound" value="water"><span>川のせせらぎ</span></label>
-        <label class="choice-card"><input type="checkbox" name="sound" value="fireworks"><span>花火の音</span></label>
-        <label class="choice-card"><input type="checkbox" name="sound" value="train"><span>電車の音</span></label>
-        <label class="choice-card"><input type="checkbox" name="sound" value="wind"><span>風の音</span></label>
-        <label class="choice-card"><input type="checkbox" name="sound" value="voices"><span>人の声</span></label>
+        <label class="choice-card">
+          <input type="checkbox" name="sound" value="putting">
+          <span>物を置く音</span>
+        </label>
+        <label class="choice-card">
+          <input type="checkbox" name="sound" value="rain">
+          <span>雨の音</span>
+        </label>
+        <label class="choice-card">
+          <input type="checkbox" name="sound" value="cheers">
+          <span>ワイングラスの乾杯</span>
+        </label>
+        <label class="choice-card">
+          <input type="checkbox" name="sound" value="forest">
+          <span>森の音</span>
+        </label>
+        <label class="choice-card">
+          <input type="checkbox" name="sound" value="metronome">
+          <span>メトロノーム</span>
+        </label>
+        <label class="choice-card">
+          <input type="checkbox" name="sound" value="clock">
+          <span>時計の音</span>
+        </label>
       </div>
     </div>
 
     <div class="music-step">
       <span class="step-label">STEP 03</span>
       <h3>どんなメロディーを重ねますか？</h3>
-      <p>思い出に重ねたいピアノの雰囲気を選んでください。</p>
+      <p>思い出に重ねたい音楽の雰囲気を選んでください。</p>
 
       <div class="choice-grid">
-        <label class="choice-card"><input type="radio" name="melody" value="warm"><span>あたたかく、やさしい</span></label>
-        <label class="choice-card"><input type="radio" name="melody" value="nostalgic"><span>懐かしく、ノスタルジック</span></label>
-        <label class="choice-card"><input type="radio" name="melody" value="sad"><span>切なく、心に残る</span></label>
-        <label class="choice-card"><input type="radio" name="melody" value="bright"><span>明るく、弾むような</span></label>
+        <label class="choice-card">
+          <input type="radio" name="melody" value="bright">
+          <span>明るい</span>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="melody" value="sad">
+          <span>悲しい</span>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="melody" value="strange">
+          <span>奇妙</span>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="melody" value="celebration">
+          <span>お祝い</span>
+        </label>
       </div>
     </div>
 
     <div class="music-complete">
       <p class="step-label">YOUR SOUNDTRACK</p>
       <h3>あなたの記憶が、音楽になる。</h3>
-      <button type="button" id="createMusic">サウンドトラックをつくる</button>
+      <button type="button" id="createMusic">
+        サウンドトラックをつくる
+      </button>
+      <button type="button" id="stopMusic">
+        音楽を止める
+      </button>
       <p id="musicMessage" class="music-message">
         3つのステップを選んで、あなただけの一曲をつくろう。
       </p>
+      <h3 id="createdTitle"></h3>
     </div>
 
   </div>
 </section>
+
 <footer>
   MEMORY SOUNDTRACK<br>
   <span style="font-size:10px;letter-spacing:.1em;">EVERY MEMORY HAS ITS OWN MUSIC.</span>
 </footer>
+
+<script>
+let playingAudios = [];
+
+const createButton = document.getElementById("createMusic");
+const stopButton = document.getElementById("stopMusic");
+const message = document.getElementById("musicMessage");
+const titleDisplay = document.getElementById("createdTitle");
+
+function stopAllMusic() {
+  playingAudios.forEach(audio => {
+    audio.pause();
+    audio.currentTime = 0;
+  });
+  playingAudios = [];
+}
+
+createButton.addEventListener("click", async () => {
+  const memory = document.querySelector(
+    'input[name="memory"]:checked'
+  );
+
+  const sounds = Array.from(
+    document.querySelectorAll('input[name="sound"]:checked')
+  );
+
+  const melody = document.querySelector(
+    'input[name="melody"]:checked'
+  );
+
+  if (!memory || sounds.length === 0 || !melody) {
+    message.textContent =
+      "思い出・生活音・メロディーをそれぞれ選んでください。";
+    return;
+  }
+
+  stopAllMusic();
+
+  const soundFiles = sounds.map(item =>
+    "audio/" + item.value + ".mp3"
+  );
+
+  const melodyFile = "audio/" + melody.value + ".mp3";
+
+  const files = [...soundFiles, melodyFile];
+
+  playingAudios = files.map(file => {
+    const audio = new Audio(file);
+    return audio;
+  });
+
+  const results = await Promise.allSettled(
+    playingAudios.map(audio => audio.play())
+  );
+
+  const failed = results.some(result =>
+    result.status === "rejected"
+  );
+
+  if (failed) {
+    stopAllMusic();
+    message.textContent =
+      "音源を再生できませんでした。ファイル名やアップロード先を確認してください。";
+    return;
+  }
+
+  const memoryName = document.querySelector(
+    'input[name="memory"]:checked + span'
+  ).textContent;
+
+  const customTitle =
+    document.getElementById("memoryTitle").value.trim();
+
+  titleDisplay.textContent =
+    customTitle || memoryName + "のサウンドトラック";
+
+  message.textContent =
+    "あなたが選んだ音とメロディーを重ねています。";
+
+});
+
+stopButton.addEventListener("click", () => {
+  stopAllMusic();
+  message.textContent = "音楽を停止しました。";
+});
+</script>
 
 </body>
 </html>
