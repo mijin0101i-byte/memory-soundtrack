@@ -273,7 +273,126 @@ footer {
     gap: 16px;
   }
 }
-</style>
+/* MY WAY */
+.my-way {
+  background: #eee9df;
+  color: #38342f;
+  padding: 110px 24px;
+}
+
+.my-way-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.my-way .section-heading {
+  text-align: center;
+  margin-bottom: 65px;
+}
+
+.my-way .section-heading .en {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: #9b8870;
+  margin-bottom: 18px;
+}
+
+.my-way .section-heading h2 {
+  font-family: serif;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: normal;
+  letter-spacing: 0.12em;
+}
+
+.my-way .section-heading p {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: #8b8175;
+  margin-top: 14px;
+}
+
+.my-way-intro {
+  max-width: 650px;
+  margin: 0 auto 75px;
+  text-align: center;
+  line-height: 2.2;
+  font-size: 13px;
+  color: #71685e;
+}
+
+.my-way-lead {
+  font-family: serif;
+  font-size: clamp(22px, 4vw, 30px);
+  color: #50463c;
+  margin-bottom: 25px;
+}
+
+.process-list {
+  border-top: 1px solid #d2c9bb;
+}
+
+.process-item {
+  display: grid;
+  grid-template-columns: 75px 1fr;
+  gap: 25px;
+  padding: 38px 15px;
+  border-bottom: 1px solid #d2c9bb;
+}
+
+.process-number {
+  font-family: serif;
+  font-size: 30px;
+  color: #a18e77;
+}
+
+.process-en {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: #a18e77;
+  margin-bottom: 12px;
+}
+
+.process-item h3 {
+  font-family: serif;
+  font-size: 19px;
+  font-weight: normal;
+  margin-bottom: 13px;
+}
+
+.process-item div > p:last-child {
+  font-size: 12px;
+  line-height: 2;
+  color: #82786d;
+}
+
+.my-way-message {
+  margin-top: 75px;
+  text-align: center;
+  font-family: serif;
+  font-size: clamp(18px, 3vw, 25px);
+  line-height: 1.8;
+  color: #6d5c4b;
+}
+
+@media (max-width: 600px) {
+  .my-way {
+    padding: 75px 22px;
+  }
+
+  .process-item {
+    grid-template-columns: 45px 1fr;
+    gap: 12px;
+    padding: 30px 5px;
+  }
+
+  .process-number {
+    font-size: 24px;
+  }
+
+  .process-item h3 {
+    font-size: 16px;
+  }
+}</style>
 </head>
 
 <body>
