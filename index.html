@@ -827,7 +827,7 @@ footer {
       
 <div class="music-step">
   <span class="step-label">STEP 02</span>
-  <h3>どんな音が聞こえていましたか？</h3>
+  <h3>どんな音を使いますか？</h3>
   <p>その思い出に似合う生活音を選んでください。（複数選択可）</p>
 
   <div class="choice-grid">
@@ -930,10 +930,7 @@ function stopAllMusic() {
 }
 
 createButton.addEventListener("click", async () => {
-  const memory = document.querySelector(
-    'input[name="memory"]:checked'
-  );
-
+  
   const sounds = Array.from(
     document.querySelectorAll('input[name="sound"]:checked')
   );
@@ -942,7 +939,7 @@ createButton.addEventListener("click", async () => {
     'input[name="melody"]:checked'
   );
 
-  if (!memory || sounds.length === 0 || !melody) {
+ if (sounds.length === 0 || !melody) {
     message.textContent =
       "思い出・生活音・メロディーをそれぞれ選んでください。";
     return;
@@ -978,15 +975,7 @@ createButton.addEventListener("click", async () => {
     return;
   }
 
-  const memoryName = document.querySelector(
-    'input[name="memory"]:checked + span'
-  ).textContent;
-
-  const customTitle =
-    document.getElementById("memoryTitle").value.trim();
-
-  titleDisplay.textContent =
-    customTitle || memoryName + "のサウンドトラック";
+  
 
   message.textContent =
     "あなたが選んだ音とメロディーを重ねています。";
