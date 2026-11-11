@@ -392,6 +392,176 @@ footer {
   .process-item h3 {
     font-size: 16px;
   }
+}/* YOUR MUSIC */
+.your-music {
+  background: #f8f5ef;
+  color: #38342f;
+  padding: 110px 24px;
+}
+
+.your-music-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.your-music .section-heading {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.your-music .section-heading .en {
+  color: #a18e77;
+  font-size: 11px;
+  letter-spacing: .3em;
+  margin-bottom: 18px;
+}
+
+.your-music .section-heading h2 {
+  font-family: serif;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: normal;
+  letter-spacing: .12em;
+}
+
+.your-music .section-heading p {
+  color: #8b8175;
+  font-size: 10px;
+  letter-spacing: .2em;
+  margin-top: 14px;
+}
+
+.your-music-intro {
+  text-align: center;
+  line-height: 2.2;
+  font-size: 13px;
+  color: #71685e;
+  margin-bottom: 80px;
+}
+
+.your-music-lead {
+  font-family: serif;
+  font-size: clamp(23px, 4vw, 31px);
+  color: #50463c;
+  margin-bottom: 20px;
+}
+
+.music-step {
+  border-top: 1px solid #d8d0c4;
+  padding: 45px 10px;
+}
+
+.step-label {
+  color: #a18e77;
+  font-family: serif;
+  font-size: 11px;
+  letter-spacing: .2em;
+}
+
+.music-step h3,
+.music-complete h3 {
+  font-family: serif;
+  font-size: 21px;
+  font-weight: normal;
+  margin: 15px 0 12px;
+}
+
+.music-step > p {
+  color: #82786d;
+  font-size: 12px;
+  margin-bottom: 28px;
+}
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.choice-card {
+  display: block;
+  cursor: pointer;
+}
+
+.choice-card input {
+  position: absolute;
+  opacity: 0;
+}
+
+.choice-card span {
+  display: block;
+  border: 1px solid #d8d0c4;
+  padding: 19px 15px;
+  font-size: 13px;
+  text-align: center;
+  color: #62594f;
+  background: #fffdf9;
+  transition: .25s;
+}
+
+.choice-card input:checked + span {
+  background: #e8dfd1;
+  border-color: #9b8870;
+  color: #38342f;
+}
+
+.choice-card:hover span {
+  border-color: #9b8870;
+}
+
+.memory-title {
+  width: 100%;
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #d8d0c4;
+  background: #fffdf9;
+  font-family: inherit;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+.music-complete {
+  margin-top: 35px;
+  padding: 55px 20px;
+  text-align: center;
+  background: #eee9df;
+}
+
+.music-complete button {
+  margin-top: 20px;
+  padding: 17px 38px;
+  border: none;
+  background: #786653;
+  color: white;
+  font-family: inherit;
+  font-size: 13px;
+  letter-spacing: .1em;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.music-complete button:hover {
+  background: #514638;
+}
+
+.music-message {
+  color: #82786d;
+  font-size: 11px;
+  line-height: 1.8;
+  margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .your-music {
+    padding: 75px 22px;
+  }
+
+  .choice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .music-step {
+    padding: 35px 3px;
+  }
 }</style>
 </head>
 
@@ -601,6 +771,93 @@ footer {
 
     <div class="my-way-message">
       <p>私は音楽は、思い出にいつでも帰ることができるタイムマシンとして使っています。</p>
+    </div>
+
+  </div>
+</section><!-- YOUR MUSIC -->
+<section class="your-music" id="your-music">
+  <div class="your-music-inner">
+
+    <div class="section-heading">
+      <div class="en">CHAPTER 03</div>
+      <h2>YOUR MUSIC</h2>
+      <p>YOUR MEMORY, YOUR SOUNDTRACK.</p>
+    </div>
+
+    <div class="your-music-intro">
+      <p class="your-music-lead">
+        あなたの思い出を、音楽に。
+      </p>
+      <p>
+        あなたの心に残っている景色は、どんな音がしますか？<br>
+        思い出と生活音、そしてピアノを組み合わせて、<br>
+        あなただけのサウンドトラックをつくってみましょう。
+      </p>
+    </div>
+
+    <div class="music-step">
+      <span class="step-label">STEP 01</span>
+      <h3>どんな思い出を音楽にしますか？</h3>
+      <p>心に残っている思い出をひとつ選んでください。</p>
+
+      <div class="choice-grid">
+        <label class="choice-card">
+          <input type="radio" name="memory" value="home">
+          <span>実家で過ごした日々</span>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="memory" value="love">
+          <span>大切な人との思い出</span>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="memory" value="dream">
+          <span>夢が叶ったあの日</span>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="memory" value="christmas">
+          <span>去年のクリスマス</span>
+        </label>
+      </div>
+
+      <input class="memory-title" type="text" id="memoryTitle"
+        placeholder="思い出にタイトルをつけてみる（任意）">
+    </div>
+
+    <div class="music-step">
+      <span class="step-label">STEP 02</span>
+      <h3>どんな音が聞こえていましたか？</h3>
+      <p>その思い出に似合う生活音を選んでください。（複数選択可）</p>
+
+      <div class="choice-grid">
+        <label class="choice-card"><input type="checkbox" name="sound" value="rain"><span>雨の音</span></label>
+        <label class="choice-card"><input type="checkbox" name="sound" value="water"><span>川のせせらぎ</span></label>
+        <label class="choice-card"><input type="checkbox" name="sound" value="fireworks"><span>花火の音</span></label>
+        <label class="choice-card"><input type="checkbox" name="sound" value="train"><span>電車の音</span></label>
+        <label class="choice-card"><input type="checkbox" name="sound" value="wind"><span>風の音</span></label>
+        <label class="choice-card"><input type="checkbox" name="sound" value="voices"><span>人の声</span></label>
+      </div>
+    </div>
+
+    <div class="music-step">
+      <span class="step-label">STEP 03</span>
+      <h3>どんなメロディーを重ねますか？</h3>
+      <p>思い出に重ねたいピアノの雰囲気を選んでください。</p>
+
+      <div class="choice-grid">
+        <label class="choice-card"><input type="radio" name="melody" value="warm"><span>あたたかく、やさしい</span></label>
+        <label class="choice-card"><input type="radio" name="melody" value="nostalgic"><span>懐かしく、ノスタルジック</span></label>
+        <label class="choice-card"><input type="radio" name="melody" value="sad"><span>切なく、心に残る</span></label>
+        <label class="choice-card"><input type="radio" name="melody" value="bright"><span>明るく、弾むような</span></label>
+      </div>
+    </div>
+
+    <div class="music-complete">
+      <p class="step-label">YOUR SOUNDTRACK</p>
+      <h3>あなたの記憶が、音楽になる。</h3>
+      <button type="button" id="createMusic">サウンドトラックをつくる</button>
+      <p id="musicMessage" class="music-message">
+        3つのステップを選んで、あなただけの一曲をつくろう。
+      </p>
     </div>
 
   </div>
